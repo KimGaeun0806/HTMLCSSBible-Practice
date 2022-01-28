@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter5_Practice</title>
+
+    <!--웹 폰트 사용을 위한 태그 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* 초기화 */
+      /* -> 모든 웹 부라우저에서 동일한 출력 결과를 만들기 위해 */
+      * {
+        margin: 0;
+        padding: 0;
+      } /* * -> 전체 선택자. html 페이지 내부의 모든 태그 선택 */
+      body {
+        font-family: sans-serif;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      img {
+        border: 0;
+      }
+
+      /* 헤더 */
+      #main_header {
+        width: 960px;
+        margin: 0 auto;
+        /* margin: 위아래 왼쪽오른쪽; */
+        /* margin-left: auto, margin-right: auto를 적용하여 가운데 정렬 */
+
+        height: 160px;
+        position: relative;
+        /* 자손의 position 속성에 absolute 키워드를 적용하면 부모의 position 속성에 relative 키워드를 적용 */
+      }
+
+      #main_header > #title {
+        position: absolute;
+        left: 20px;
+        top: 30px;
+      } /* > -> 자손선택자. 특정 태그 아래에 있는 자손을 선택 */
+
+      #main_header > #main_gnb {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
+
+      #main_header > #main_lnb {
+        position: absolute;
+        right: 0px;
+        bottom: 10px;
+      }
+
+      /* 타이틀 */
+      #title {
+        font-family: 'Neonderthaw', cursive;
+      }
+
+      /* 메뉴(1) */
+      #main_gnb > ul {
+        overflow: hidden;
+      } /* 자손에 float 속성을 사용했으므로 부모의 overflow 속성에 hidden 키워드 적용 */
+
+      #main_gnb > ul > li {
+        float: left;
+      }
+
+      #main_gnb > ul > li > a {
+        display: block;
+        padding: 2px 10px;
+        border: 1px solid black;
+      }
+
+      #main_gnb > ul > li > a:hover {
+        background: black;
+        color: white;
+      }
+
+      #main_gnb > ul > li:first-child > a {
+        border-radius: 10px 0 0 10px;
+        /* border-radius: 왼쪽위 오른쪽위 오른쪽아래 왼쪽아래; */
+      } /* :first-child -> 형제 관계 중에서 첫 번째에 위치하는 태그 선택 */
+
+      #main_gnb > ul > li:last-child > a {
+        border-radius: 0 10px 10px 0;
+      } /* :last-child -> 형제 관계 중에서 마지막에 위치하는 태그 선택 */
+
+      /* 메뉴(2) */
+      #main_lnb > ul {
+        overflow: hidden;
+      }
+
+      #main_lnb > ul > li {
+        float: left;
+      }
+
+      #main_lnb > ul > li > a {
+        display: block;
+        padding: 10px 20px;
+        border: 1px solid black;
+      }
+
+      #main_lnb > ul > li > a:hover {
+        background: black;
+        color: white;
+      }
+
+      #main_lnb > ul > li:first-child > a {
+        border-radius: 10px 0 0 10px;
+      }
+
+      #main_lnb > ul > li:last-child > a {
+        border-radius: 0 10px 10px 0;
+      }
+
+      /* 콘텐츠 */
+      #content {
+        width: 960px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      #content > #main_section {
+        width: 750px;
+        float: left;
+        /* float: left -> 왼쪽에 붙이기 */
+      }
+
+      #content > #main_aside {
+        width: 200px;
+        float: right;
+        /* float: right -> 오른쪽에 붙이기 */
+      }
+
+      /* 본문 */
+      #main_section > article.main_article {
+        margin-bottom: 10px;
+        padding: 20px;
+        border: 1px solid black;
+      }
+
+      /* 사이드 - 첫 번째 탭 */
+      input:nth-of-type(1) {
+        display: none;
+        /* input 태그는 보이지 않게 만듦 */
+      } /* :nth-of-type(수열) -> 형제 관계 중에서 앞에서 수열 번째로 등장하는 특정 태그를 선택 */
+
+      input:nth-of-type(1) ~ div:nth-of-type(1) {
+        display: none;
+        /* input 태그가 체크되어있지 않을 경우에는 뒤에 위치하는 div 태그를 보이지 않게 만듦 */
+      } /* 선택자A ~ 선택자B -> 선택자A 뒤에 위치하는 선택자B를 선택 */
+
+      input:nth-of-type(1):checked ~ div:nth-of-type(1) {
+        display: block;
+        /* input 태그가 체크되어있을 경우에는 뒤에 위치하는 div 태그를 보이게 만듦 */
+      }
+
+      /* 사이드 - 두 번째 탭 */
+      input:nth-of-type(2) {
+        display: none;
+      }
+
+      input:nth-of-type(2) ~ div:nth-of-type(2) {
+        display: none;
+      }
+
+      input:nth-of-type(2):checked ~ div:nth-of-type(2) {
+        display: block;
+      }
+
+      /* 사이드 - 탭 모양 구성 */
+      section.buttons {
+        overflow: hidden;
+      }
+
+      section.buttons > label {
+        display: block;
+        float: left;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        box-sizing: border-box;
+        border: 1px solid black;
+        background: black;
+        color: white;
+        /* float 속성을 이용하면 태그를 수평으로 정렬할 수 있음  */
+        /* border-box 키워드는 width 속성과 height 속성이 테두리를 포함한 영역의 크기를 지정하게 만듦  */
+      }
+
+      input:nth-of-type(1):checked ~ section.buttons > label:nth-of-type(1) {
+        background: white;
+        color: black;
+      }
+
+      input:nth-of-type(2):checked ~ section.buttons > label:nth-of-type(2) {
+        background: white;
+        color: black;
+      }
+
+      /* 목록 */
+      .item {
+        overflow: hidden;
+        padding: 10px;
+        border: 1px solid black;
+        border-top: none;
+      }
+
+      .thumbnail {
+        float: left;
+      }
+
+      .description {
+        float: left;
+        margin-left: 10px;
+      }
+
+      .description > strong {
+        display: block;
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* text-overflow 속성을 사용하면 자신의 너비를 넘어갔을 때 생략 기호로 표시됨  */
+      }
+
+      /* 푸터 */
+      #main_footer {
+        width: 960px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="main_header">
+      <div id="title">
+        <h1>Rint Development</h1>
+        <h2>HTML5 + CSS3 Basic</h2>
+      </div>
+
+      <nav id="main_gnb">
+        <!--gnb -> global navigation bar -->
+        <ul>
+          <li><a href="#">Web</a></li>
+          <li><a href="#">Mobile</a></li>
+          <li><a href="#">Game</a></li>
+          <li><a href="#">Simulation</a></li>
+          <li><a href="#">Data</a></li>
+          <!-- href="#" -> 이동하지 않는 a태그. 빈 링크 -->
+        </ul>
+      </nav>
+      <nav id="main_lnb">
+        <!--lnb -> local navigation bar -->
+        <ul>
+          <li><a href="#">HTML5</a></li>
+          <li><a href="#">CSS3</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">jQuery</a></li>
+          <li><a href="#">Node.js</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="content">
+      <section id="main_section">
+        <article class="main_article">
+          <h1>Main Section</h1>
+          <p>
+            아무렇지 않게 넌 평소와 같은 말투로 오늘 밤에 만나자 준비하고 널
+            만나러 갔어 장미꽃을 손에 꼭 들고서 집 앞에서 널 기다렸어 좋아할
+            너를 생각하면서 돌아오는 말은 헤어지자고 그 말하러 나온 거라고 순간
+            난 얼어버렸어 이제는 널 보고 싶어도 볼 수 없대 밤에 통화도 못한대 넌
+            그래도 괜찮니 널 잊고 행복하길 바란대 우 네 사랑은 여기까지 래요
+            먹먹하게 돌아오던 그 밤은 제일 추운 여름밤이었어 차가워진 우리
+            사이처럼집에 들어와 침대에 누워서 탁자 위 사진을 보았어 우리 참
+            좋았었는데 이제는 널 보고 싶어도 볼 수 없대 밤에 통화도 못한대 넌
+            그래도 괜찮니 널 잊고 행복하길 바란대 우 네 사랑은 여기까지 래요
+            헤어진 그날 밤 너는 유난히도 예뻤어 그 모습을 기억할게 이제는 널
+            보고 싶어도 볼 수 없대 밤에 통화도 못한대 넌 그래도 괜찮니 널 잊고
+            행복하길 바란대 우 네 사랑은 여기까지 래요 내 사랑은 아직
+          </p>
+        </article>
+        <article class="main_article">
+          <h1>Main Section</h1>
+          <p>
+            처음 너를 만난 그 모든 순간이 쉬지 않고 생각나 나에게로 와서
+            쏟아지네 밤하늘의 저 별처럼 고요해져버린 이 시간엔 널 그리워하는
+            일로 밤을 새 비 오는 소리도 괜히 쓸쓸해 너와 같이 있던 여기에 네가
+            없으니까 처음 너를 만난 그 모든 순간이 쉬지 않고 생각나 나에게로
+            와서 쏟아지네 밤하늘의 저 별처럼 나의 이 마음을 담아 시를 써도
+            표현할 수 없어 깊은 마음인걸 나를 사랑하지 않아서 난 아무 말도 못
+            했어 안녕이란 그 말이 결국 다였나봐 처음 너를 만난 그 모든 순간이
+            쉬지 않고 생각나 나에게로 와서 쏟아지네 밤하늘의 저 별처럼 눈감아
+            생각해보면 참 좋았었는데 신호등의 빨간불이 너의 마음 같아 널 잊어야
+            하는데 파도처럼 내게 밀려드는 너를 잊을 수가 없어 너의 목소리가
+            들려오네 깨어나면 꿈이겠지만 보라빛의 하늘색은 외로워 너도 지금 보고
+            있을까 고여있는 빗물 속에 내 눈물이 이렇게 떨어지는데 너 없이는
+            안되나봐 부탁해
+          </p>
+        </article>
+        <article class="main_article">
+          <h1>Main Section</h1>
+          <p>
+            자꾸만 연락을 피하고 바쁘다며 약속을 미루고 점점 변해가는 네 모습
+            무심한 말투 조금씩 넌 반대로 가고 있어 다급했던 이별의 순간들 아직도
+            난 거짓말 같아서 아름답게 웃던 네 모습 볼 수 없다고 생각하면 미칠 듯
+            아픈데 자꾸만 생각이나 너무나도 사랑했었고 그런 내겐 전부였는데 이젠
+            너와 난 반대로 살고 있나 봐 사랑해 너밖에 없단 말 그 말 너무나도
+            그리워서 너를 보낼 수가 없나 봐 너를 저 멀리 보이는 네 모습 웃고
+            있는 넌 잘 지냈나 봐 찾아가지 말걸 그랬어 믿고 싶었는데 영화 같은 일
+            내겐 없나 봐 나를 다 잊은 거니 너무나도 사랑했었고 그런 내겐
+            전부였는데 이젠 너와 난 반대로 살고 있나 봐 사랑해 너밖에 없단 말 그
+            말 너무나도 그리워서 너를 보낼 수가 없나 봐 행복해 보여 나 없이도 잘
+            지내는데 어떻게 난 널 잊고 살 수 있을까 웃으며 내 품에 안긴 너 너의
+            모습이 죽을 만큼 그리워서 보낼 수가 없잖아 너를
+          </p>
+        </article>
+      </section>
+      <aside id="main_aside">
+        <input id="first" type="radio" name="tab" checked="checked" />
+        <input id="second" type="radio" name="tab" />
+        <section class="buttons">
+          <label for="first">First</label>
+          <label for="second">Second</label>
+        </section>
+        <div class="tab_item">
+          <ul>
+            <li class="item">
+              <a href="#">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/45x45" />
+                </div>
+                <div class="description">
+                  <strong>HTML5 Canvas</strong>
+                  <p>2022-01-28</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="item">
+              <a href="#">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/45x45" />
+                </div>
+                <div class="description">
+                  <strong>HTML5 Audio</strong>
+                  <p>2022-01-28</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="item">
+              <a href="#">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/45x45" />
+                </div>
+                <div class="description">
+                  <strong>HTML Video</strong>
+                  <p>2022-01-28</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="item">
+              <a href="#">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/45x45" />
+                </div>
+                <div class="description">
+                  <strong>HTML5 Semantic Web</strong>
+                  <p>2022-01-28</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="tab_item">
+          <li class="item">
+            <a href="#">
+              <div class="thumbnail">
+                <img src="http://placehold.it/45x45" />
+              </div>
+              <div class="description">
+                <strong>CSS3 Transition</strong>
+                <p>2022-01-28</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="item">
+            <a href="#">
+              <div class="thumbnail">
+                <img src="http://placehold.it/45x45" />
+              </div>
+              <div class="description">
+                <strong>CSS3 Transition</strong>
+                <p>2022-01-28</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="item">
+            <a href="#">
+              <div class="thumbnail">
+                <img src="http://placehold.it/45x45" />
+              </div>
+              <div class="description">
+                <strong>CSS3 Border</strong>
+                <p>2022-01-28</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="item">
+            <a href="#">
+              <div class="thumbnail">
+                <img src="http://placehold.it/45x45" />
+              </div>
+              <div class="description">
+                <strong>CSS3 Box</strong>
+                <p>2022-01-28</p>
+              </div>
+            </a>
+          </li>
+        </div>
+      </aside>
+    </div>
+
+    <footer id="main_footer">
+      <h3>HTML5 + CSS Basic</h3>
+      <address>Website Layout Basic</address>
+    </footer>
+  </body>
+</html>
