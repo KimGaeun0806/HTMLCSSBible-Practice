@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 7</title>
+    <style>
+      /* 초기화 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Helvetica', sans-serif;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      /* 헤더 */
+      #main_header {
+        height: 60px;
+        line-height: 60px;
+        padding-left: 10px;
+        border-bottom: 1px solid black;
+        background: #1d4088;
+        color: white;
+      }
+
+      /* 내비게이션 */
+      #main_gnb {
+        overflow: hidden;
+        border-bottom: 1px solid black;
+        background: #32394a;
+      }
+
+      #main_gnb > ul.left {
+        overflow: hidden;
+        float: left;
+        /* overflow 속성과 float 속성을 이용해 수평 정렬 */
+      }
+
+      #main_gnb > ul.right {
+        overflow: hidden;
+        float: right;
+      }
+
+      #main_gnb > ul.left > li {
+        float: left;
+      }
+
+      #main_gnb > ul.right > li {
+        float: left;
+      }
+
+      #main_gnb a {
+        display: block;
+        padding: 10px 20px;
+        border-left: 1px solid #5f6673;
+        border-right: 1px solid #242a37;
+        color: white;
+        font-weight: bold;
+      }
+
+      body {
+        min-width: 760px;
+        /* 너비가 760픽셀 이하로 내려가지 않게 설정 */
+      }
+
+      /* 콘텐츠 */
+      #wrap {
+        overflow: hidden;
+      }
+
+      #wrap > #main_lnb {
+        float: left;
+        width: 200px;
+      }
+
+      #wrap > #content_wrap {
+        float: left;
+        width: 100%;
+        margin-right: -200px;
+        /* margin-right: -200px;으로 오른쪽으로 당김 */
+      }
+
+      #wrap > #content_wrap > #content {
+        padding-right: 200px;
+        /* padding-rignt: 200px;으로 왼쪽으로 밀기 */
+      }
+      /* margin-right 속성과 padding-right 속성을 이용 -> 창 너비를 변경해도 오른쪽에 위치하는 태그의 너비가 동적으로 늘어나 형태를 유지함 */
+
+      #content {
+        background: white;
+        border-left: 1px solid black;
+      }
+
+      article {
+        padding: 10px;
+      }
+
+      /* 수직 목록 */
+      #wrap {
+        background: #71b1d1;
+      }
+
+      #main_lnb > ul > li > a {
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 15px;
+        border-top: 1px solid #96d6f6;
+        border-bottom: 1px solid #6298b2;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* 푸터 */
+      #main_footer {
+        padding: 10px;
+        border-top: 3px solid black;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 헤더 -->
+    <header id="main_header">
+      <h1>Fluid</h1>
+    </header>
+
+    <!-- 내비게이션 -->
+    <nav id="main_gnb">
+      <ul class="left">
+        <li><a href="#">Button</a></li>
+        <li><a href="#">Button</a></li>
+        <li><a href="#">Button</a></li>
+        <li><a href="#">Button</a></li>
+        <li><a href="#">Button</a></li>
+        <li><a href="#">Button</a></li>
+      </ul>
+      <ul class="right">
+        <li><a href="#">Button</a></li>
+        <li><a href="#">Button</a></li>
+      </ul>
+    </nav>
+
+    <div id="wrap">
+      <!-- 수직 목록 -->
+      <nav id="main_lnb">
+        <ul>
+          <li><a href="#">Button</a></li>
+          <li><a href="#">Button</a></li>
+          <li><a href="#">Button</a></li>
+          <li><a href="#">Button</a></li>
+          <li><a href="#">Button</a></li>
+        </ul>
+      </nav>
+
+      <!-- 콘텐츠 -->
+      <div id="content_wrap">
+        <div id="content">
+          <article>
+            <h1>Talk</h1>
+            <p>
+              Can't we just talk? Can't we just talk? Talk about where we're
+              goin' Before we get lost, let me out first Can't get what we want
+              without knowin' I've never felt like this before I apologize if
+              I'm movin' too far Can't we just talk? Can't we just talk? Figure
+              out where we're goin' Yeah, started off right I can see it in your
+              eyes I can tell that you're wantin' more What's been on your mind?
+              There's no reason we should hide Tell me somethin' I ain't heard
+              before Oh, I've been dreamin' 'bout it And it's you I'm on So stop
+              thinkin' 'bout it
+            </p>
+            <p>
+              Can't we just talk? Can't we just talk? Talk about where we're
+              goin' Before we get lost, let me out first (Yeah) Can't get what
+              we want without knowin' (No) I've never felt like this before I
+              apologize if I'm movin' too far Can't we just talk? Can't we just
+              talk? Figure out where we're goin' Oh, nah Penthouse view, left
+              some flowers in the room I'll make sure I leave the door unlocked
+              Now I'm on the way, swear I won't be late I'll be there by five
+              o'clock Oh, you've been dreamin' 'bout it And I'm what you want So
+              stop thinkin' 'bout it
+            </p>
+          </article>
+          <article>
+            <h1>Talk</h1>
+            <p>
+              Can't we just talk? Can't we just talk? Talk about where we're
+              goin' Before we get lost, let me out first Can't get what we want
+              without knowin' I've never felt like this before I apologize if
+              I'm movin' too far Can't we just talk? Can't we just talk? Figure
+              out where we're goin' Yeah, started off right I can see it in your
+              eyes I can tell that you're wantin' more What's been on your mind?
+              There's no reason we should hide Tell me somethin' I ain't heard
+              before Oh, I've been dreamin' 'bout it And it's you I'm on So stop
+              thinkin' 'bout it
+            </p>
+            <p>
+              Can't we just talk? Can't we just talk? Talk about where we're
+              goin' Before we get lost, let me out first (Yeah) Can't get what
+              we want without knowin' (No) I've never felt like this before I
+              apologize if I'm movin' too far Can't we just talk? Can't we just
+              talk? Figure out where we're goin' Oh, nah Penthouse view, left
+              some flowers in the room I'll make sure I leave the door unlocked
+              Now I'm on the way, swear I won't be late I'll be there by five
+              o'clock Oh, you've been dreamin' 'bout it And I'm what you want So
+              stop thinkin' 'bout it
+            </p>
+          </article>
+          <article>
+            <h1>Talk</h1>
+            <p>
+              Can't we just talk? Can't we just talk? Talk about where we're
+              goin' Before we get lost, let me out first Can't get what we want
+              without knowin' I've never felt like this before I apologize if
+              I'm movin' too far Can't we just talk? Can't we just talk? Figure
+              out where we're goin' Yeah, started off right I can see it in your
+              eyes I can tell that you're wantin' more What's been on your mind?
+              There's no reason we should hide Tell me somethin' I ain't heard
+              before Oh, I've been dreamin' 'bout it And it's you I'm on So stop
+              thinkin' 'bout it
+            </p>
+            <p>
+              Can't we just talk? Can't we just talk? Talk about where we're
+              goin' Before we get lost, let me out first (Yeah) Can't get what
+              we want without knowin' (No) I've never felt like this before I
+              apologize if I'm movin' too far Can't we just talk? Can't we just
+              talk? Figure out where we're goin' Oh, nah Penthouse view, left
+              some flowers in the room I'll make sure I leave the door unlocked
+              Now I'm on the way, swear I won't be late I'll be there by five
+              o'clock Oh, you've been dreamin' 'bout it And I'm what you want So
+              stop thinkin' 'bout it
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer id="main_footer">
+      <h3>HTML5 + CSS3 Basic</h3>
+      <address>Website Layout Basic</address>
+    </footer>
+  </body>
+</html>
